@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `optica`.`glasses_supliers` (
+CREATE TABLE IF NOT EXISTS `optica`.`supliers` (
   `nif` VARCHAR(9) NOT NULL,
   `name` VARCHAR(45) NULL,
   `address` VARCHAR(100) NOT NULL,
@@ -7,21 +7,33 @@ CREATE TABLE IF NOT EXISTS `optica`.`glasses_supliers` (
   PRIMARY KEY (`nif`))
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `optica`.`brands` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `brand` VARCHAR(45) NOT NULL,
+  `suplier_id` VARCHAR(9) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `suplier_ref_idx` (`suplier_id` ASC) VISIBLE,
+  CONSTRAINT `suplier_ref`
+    FOREIGN KEY (`suplier_id`)
+    REFERENCES `optica`.`supliers` (`nif`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 CREATE TABLE IF NOT EXISTS `optica`.`products` (
   `product_id` INT NOT NULL AUTO_INCREMENT,
-  `brand` VARCHAR(45) NOT NULL,
+  `brand` INT NOT NULL,
   `dioptre_left` DECIMAL(4,2) NOT NULL,
   `dioptre_right` DECIMAL(4,2) NOT NULL,
   `frame_type` ENUM("flotant", "pasta", "metallica") NOT NULL,
   `frame_colour` VARCHAR(45) NOT NULL,
   `glass_colour` VARCHAR(45) NOT NULL,
   `price` DECIMAL(8,2) NOT NULL,
-  `suplier_id` VARCHAR(9) NOT NULL,
   PRIMARY KEY (`product_id`),
-  INDEX `suplier_id_idx` (`suplier_id` ASC) VISIBLE,
-  CONSTRAINT `product_glass_suplier`
-    FOREIGN KEY (`suplier_id`)
-    REFERENCES `optica`.`glasses_supliers` (`nif`)
+  INDEX `brand_ref_idx` (`brand` ASC) VISIBLE,
+  CONSTRAINT `brand_ref`
+    FOREIGN KEY (`brand`)
+    REFERENCES `optica`.`brands` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

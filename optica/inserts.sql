@@ -42,7 +42,7 @@ VALUES
 'Olgierd', 'Valas');
 
 
-INSERT INTO `optica`.`glasses_supliers`
+INSERT INTO `optica`.`supliers`
 (`nif`,
 `name`,
 `address`,
@@ -65,6 +65,19 @@ VALUES
 '555-567-999',
 '444-567-999');
 
+INSERT INTO `optica`.`brands` (`brand`, `suplier_id`) 
+VALUES 
+('Afax', 'A12345678'),
+('Befax', 'A12345678'),
+('Cefax', 'A12345678'),
+('Rana', 'B98765432'),
+('Fuxy', 'G11223344'),
+('Difex', 'A12345678'),
+('Egofax', 'B98765432'),
+('Grex', 'A12345678'),
+('Hexon', 'B98765432'),
+('Inofex', 'G11223344');
+
 
 INSERT INTO `optica`.`products`
 (`brand`,
@@ -73,19 +86,18 @@ INSERT INTO `optica`.`products`
 `frame_type`,
 `frame_colour`,
 `glass_colour`,
-`price`,
-`suplier_id`)
+`price`)
 VALUES
-('Afax', 2.75, 3.75, 'pasta', 'black', 'light', 150.00, 'A12345678'),
-('Befax', 1.75, 1.00, 'pasta', 'grey', 'light', 124.00, 'A12345678'),
-('Cefax', 1.00, 1.00, 'pasta', 'red', 'dark', 100.70, 'A12345678'),
-('Rana', 1.00, 1.00, 'flotant', 'black', 'light', 199.99, 'B98765432'),
-('Fuxy', 1.00, 1.00, 'flotant', 'black', 'light', 199.99, 'G11223344'),
-('Difex', 1.50, 2.00, 'pasta', 'brown', 'light', 89.99, 'A12345678'),
-('Egofax', 3.25, 2.75, 'pasta', 'blue', 'dark', 120.50, 'B98765432'),
-('Grex', 1.75, 2.50, 'flotant', 'silver', 'light', 179.99, 'A12345678'),
-('Hexon', 2.25, 2.25, 'flotant', 'gold', 'dark', 199.00, 'B98765432'),
-('Inofex', 1.25, 1.50, 'pasta', 'green', 'light', 99.50, 'G11223344');
+(1, 2.75, 3.75, 'pasta', 'black', 'light', 150.00),
+(2, 1.75, 1.00, 'pasta', 'grey', 'light', 124.00),
+(3, 1.00, 1.00, 'pasta', 'red', 'dark', 100.70),
+(4, 1.00, 1.00, 'flotant', 'black', 'light', 199.99),
+(5, 1.00, 1.00, 'flotant', 'black', 'light', 199.99),
+(6, 1.50, 2.00, 'pasta', 'brown', 'light', 89.99),
+(7, 3.25, 2.75, 'pasta', 'blue', 'dark', 120.50),
+(8, 1.75, 2.50, 'flotant', 'silver', 'light', 179.99),
+(9, 2.25, 2.25, 'flotant', 'gold', 'dark', 199.00),
+(10, 1.25, 1.50, 'pasta', 'green', 'light', 99.50);
 
 
 INSERT INTO `optica`.`product_sales`
