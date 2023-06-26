@@ -27,7 +27,7 @@ FROM
     JOIN brands b
     ON p.brand = b.id
 WHERE
-    (ps.date BETWEEN '2022-06-15' AND '2023-06-15');
+    (ps.date BETWEEN '2022-06-15' AND '2023-06-15') AND (s.name = 'Miki' AND s.surname = 'Roberts');
 
 -- Llista els diferents proveïdors que han subministrat ulleres venudes amb èxit per l'òptica.
 

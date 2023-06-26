@@ -1,0 +1,27 @@
+SELECT p.apellido1, p.apellido2, p.nombre FROM persona p WHERE p.tipo = 'alumno' ORDER BY p.apellido1 ASC, p.apellido2 ASC, p.nombre ASC;
+SELECT p.nombre, p.apellido1, p.apellido2 FROM persona p WHERE p.tipo = 'alumno' and p.telefono IS NULL;
+SELECT * FROM persona p WHERE p.tipo = 'alumno' and YEAR(p.fecha_nacimiento) = 1999;
+SELECT * FROM persona p WHERE p.tipo = 'profesor' AND p.telefono IS NULL AND p.nif LIKE '%K';
+SELECT * FROM asignatura a WHERE a.curso = 3 AND a.cuatrimestre = 1 AND id_grado = 7;
+SELECT p.apellido1 as 'primer cognom', p.apellido2 as 'segon cognom', p.nombre as 'nom', d.nombre as 'nom del departament' FROM persona p JOIN profesor pf ON p.id = pf.id_profesor JOIN departamento d ON pf.id_departamento = d.id ORDER BY p.apellido1 ASC, p.apellido2 ASC, p.nombre ASC;
+SELECT a.nombre, ce.anyo_inicio, ce.anyo_fin FROM alumno_se_matricula_asignatura asma JOIN asignatura a ON asma.id_asignatura = a.id JOIN curso_escolar ce ON asma.id_curso_escolar = ce.id WHERE id_alumno = (SELECT p.id FROM persona p WHERE p.nif = '26902806M');
+SELECT DISTINCT d.nombre FROM asignatura a JOIN grado g on (a.id_grado = g.id) JOIN profesor p USING (id_profesor) JOIN departamento d ON p.id_departamento = d.id WHERE g.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
+SELECT DISTINCT p.nif, p.nombre, p.apellido1, p.apellido2 FROM persona p JOIN alumno_se_matricula_asignatura asma ON p.id = asma.id_alumno JOIN curso_escolar ce ON asma.id_curso_escolar = ce.id WHERE ce.anyo_inicio = 2018;
+SELECT d.nombre, p.apellido1, p.apellido2, p.nombre FROM persona p RIGHT JOIN profesor pf ON p.id = pf.id_profesor LEFT JOIN departamento d ON pf.id_departamento = d.id ORDER BY d.nombre ASC, p.apellido1 ASC, p.apellido2 ASC, p.nombre ASC;
+SELECT d.nombre FROM departamento d LEFT JOIN profesor pf ON (pf.id_departamento = d.id) WHERE pf.id_profesor  IS NULL;
+SELECT d.nombre FROM persona p LEFT JOIN profesor pf ON p.id = pf.id_profesor RIGHT JOIN departamento d ON pf.id_departamento = d.id WHERE p.id IS NULL;
+SELECT p.* FROM asignatura a RIGHT JOIN profesor pf USING (id_profesor) LEFT JOIN persona p ON p.id = pf.id_profesor WHERE a.id IS NULL;
+SELECT a.*, pf.* FROM asignatura a LEFT JOIN profesor pf USING (id_profesor) WHERE id_profesor IS NULL;
+SELECT d.nombre FROM profesor pf LEFT JOIN asignatura a USING (id_profesor) RIGHT JOIN departamento d ON (pf.id_departamento = d.id) GROUP BY d.id HAVING count(d.id) = count(CASE WHEN a.id_profesor is NULL THEN 1 END);
+SELECT count(id) as 'Total number of students' FROM persona WHERE tipo = 'alumno';
+SELECT count(id) as 'Students born in 1999' FROM persona WHERE tipo = 'alumno' AND YEAR(fecha_nacimiento) = 1999;
+SELECT d.nombre, count(p.id) AS profesor_number FROM persona p RIGHT JOIN profesor pf ON (p.id = pf.id_profesor) LEFT JOIN departamento d ON (pf.id_departamento = d.id) GROUP BY d.nombre ORDER BY profesor_number DESC;
+SELECT d.nombre, count(p.id) AS profesor_number FROM persona p RIGHT JOIN profesor pf ON (p.id = pf.id_profesor) RIGHT JOIN departamento d ON (pf.id_departamento = d.id) GROUP BY d.nombre;
+SELECT g.nombre, count(a.id) AS number_of_lectures FROM grado g LEFT JOIN asignatura a ON (a.id_grado = g.id) GROUP BY g.id ORDER BY number_of_lectures DESC;
+SELECT g.nombre, count(a.id) AS number_of_lectures FROM grado g JOIN asignatura a ON (a.id_grado = g.id) GROUP BY g.id HAVING number_of_lectures > 40;
+SELECT g.nombre, a.tipo, sum(a.creditos) as 'sum of credits' FROM grado g JOIN asignatura a ON (a.id_grado = g.id) GROUP BY g.nombre, a.tipo;
+SELECT ce.anyo_inicio, count(asma.id_alumno) as 'students number' FROM alumno_se_matricula_asignatura asma JOIN curso_escolar ce ON (asma.id_curso_escolar = ce.id) GROUP BY ce.id;
+SELECT p.id, p.nombre, p.apellido1, p.apellido2, count(a.id) AS 'number of subjects' FROM persona p RIGHT JOIN profesor pf ON (p.id = pf.id_profesor) LEFT JOIN asignatura a ON (a.id_profesor  = p.id) GROUP BY p.id ORDER BY 'number of subjects' DESC;
+SELECT * FROM persona p JOIN alumno_se_matricula_asignatura asma ON (p.id = asma.id_alumno) JOIN asignatura a ON (asma.id_asignatura = a.id) JOIN curso_escolar ce ON (asma.id_curso_escolar = ce.id) WHERE p.fecha_nacimiento = (SELECT p.fecha_nacimiento FROM persona p where p.tipo = 'alumno' ORDER BY p.fecha_nacimiento DESC LIMIT 1);
+SELECT p.* FROM persona p RIGHT JOIN profesor pf ON (pf.id_profesor = p.id) LEFT JOIN asignatura a ON (a.id_profesor = p.id) WHERE pf.id_departamento IS NOT NULL AND a.id IS NULL;
+
