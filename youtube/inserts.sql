@@ -1,4 +1,4 @@
-INSERT INTO youtube.users (email, password, account_name, date_of_birth, sex, country, zip_code)
+INSERT INTO `youtube`.`users` (`email`, `password`, `account_name`, `date_of_birth`, `sex`, `country`, `zip_code`)
 VALUES
     ('john@example.com', 'password123', 'JohnDoe', '1990-05-15', 'm', 'USA', '12345'),
     ('jane@example.com', 'password456', 'JaneSmith', '1992-08-27', 'f', 'Canada', 'A1A 1A1'),
@@ -31,7 +31,7 @@ VALUES
     ('henry@example.com', 'password432', 'HenryAnderson', '1992-09-15', 'm', 'Australia', '7000'),
     ('riley@example.com', 'password765', 'RileyThompson', '1995-02-28', 'f', 'Germany', '54321');
     
-    INSERT INTO youtube.videos (title, size, file_name, duration_seconds, views, state, publishing_time, user_id)
+    INSERT INTO `youtube`.`videos` (`title`, `size`, `file_name`, `duration_seconds`, `views`, `state`, `publishing_time`, `user_id`)
 VALUES
     ('Video Title 1', 123456, 'video1.mp4', 7218, 5890, 'public', '2023-06-15 10:00:00', 17),
     ('Video Title 2', 654321, 'video2.mp4', 15683, 9213, 'private', '2023-06-16 09:30:00', 5),
@@ -49,7 +49,7 @@ VALUES
     ('Video Title 14', 345678, 'video14.mp4', 13980, 2987, 'public', '2023-06-28 17:30:00', 24),
     ('Video Title 15', 123456, 'video15.mp4', 7923, 5412, 'hidden', '2023-06-29 11:55:00', 8);
     
-    INSERT INTO youtube.playlists (name, date, status, playlist_owner)
+    INSERT INTO `youtube`.`playlists` (`name`, `date`, `status`, `playlist_owner`)
 VALUES
     ('Playlist 1', '2023-06-15', 'public', 1),
     ('Playlist 2', '2021-06-16', 'private', 2),
@@ -67,7 +67,7 @@ VALUES
     ('Playlist 14', '2023-06-28', 'private', 14);
   
     
-    INSERT INTO youtube.playlist_items (video_id, playlist_id)
+    INSERT INTO `youtube`.`playlist_items` (`video_id`, `playlist_id`)
 VALUES
     (1, 1),
     (2, 1),
@@ -89,7 +89,7 @@ VALUES
     (14, 7),
     (15, 8);
     
-     INSERT INTO youtube.channels (name, creation_date, user_id)
+     INSERT INTO `youtube`.`channels` (`name`, `creation_date`, `user_id`)
 VALUES
     ('Channel 1', '2023-06-15', 1),
     ('Channel 2', '2021-06-16',  2),
@@ -104,7 +104,7 @@ VALUES
     ('Channel 11', '2023-06-25',  11);
     
     
-    INSERT INTO youtube.channel_subscriptions (channel_id, subscriber_id)
+    INSERT INTO `youtube`.`channel_subscriptions` (`channel_id`, `subscriber_id`)
 VALUES 
  (1,2),
  (1,3),
@@ -117,7 +117,7 @@ VALUES
  (7,8),
  (7,2);
  
- INSERT INTO youtube.tags (film_id, name)
+ INSERT INTO `youtube`.`tags` (`film_id`, `name`)
 VALUES 
  (1,'nature'),
  (2,'nature'),

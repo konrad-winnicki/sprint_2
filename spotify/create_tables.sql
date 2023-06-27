@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `Spotify`.`users` (
+CREATE TABLE IF NOT EXISTS `spotify`.`users` (
     `user_id` INT NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(45) NOT NULL,
     `account_name` VARCHAR(45) NOT NULL,
@@ -9,9 +9,9 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`users` (
     `zip_code` VARCHAR(45) NOT NULL,
     `subscription_type` ENUM('free', 'premium') NULL,
     PRIMARY KEY (`user_id`)
-)  ENGINE=INNODB;
+)  ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`subscriptions` (
+CREATE TABLE IF NOT EXISTS `spotify`.`subscriptions` (
   `subscription_id` INT NOT NULL AUTO_INCREMENT,
   `start_date` DATE NOT NULL,
   `subscription_renew` DATE NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`subscriptions` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`credit_cards` (
+CREATE TABLE IF NOT EXISTS `spotify`.`credit_cards` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `card_number` VARCHAR(16) NOT NULL,
   `expiry_data` VARCHAR(45) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`credit_cards` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`transactions` (
+CREATE TABLE IF NOT EXISTS `spotify`.`transactions` (
   `order_number` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NOT NULL,
   `total` DECIMAL(9,2) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`transactions` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`paypal` (
+CREATE TABLE IF NOT EXISTS `spotify`.`paypal` (
   `paypal_id` INT NOT NULL AUTO_INCREMENT ,
   `user_name` VARCHAR(45) NOT NULL,
   `subscription_id` INT NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`paypal` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`artist` (
+CREATE TABLE IF NOT EXISTS `spotify`.`artist` (
   `artist_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `surname` VARCHAR(45) NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`artist` (
   PRIMARY KEY (`artist_id`, `name`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`albums` (
+CREATE TABLE IF NOT EXISTS `spotify`.`albums` (
   `album_id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `release_year` YEAR NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`albums` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`songs` (
+CREATE TABLE IF NOT EXISTS `spotify`.`songs` (
   `song_id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `duration_seconds` INT UNSIGNED NULL,
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`songs` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`artist_and_albums_followers` (
+CREATE TABLE IF NOT EXISTS `spotify`.`artist_and_albums_followers` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `follower_id` INT NOT NULL,
   `artist_id` INT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`artist_and_albums_followers` (
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`album_and_songs_likes` (
+CREATE TABLE IF NOT EXISTS `spotify`.`album_and_songs_likes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `liked_by` INT NOT NULL,
   `album_id` INT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`album_and_songs_likes` (
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`playlists` (
+CREATE TABLE IF NOT EXISTS `spotify`.`playlists` (
   `playlist_id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `creation_date` DATE NOT NULL,
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`playlists` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`playlist_items` (
+CREATE TABLE IF NOT EXISTS `spotify`.`playlist_items` (
   `item_id` INT NOT NULL AUTO_INCREMENT,
   `added_by` INT NOT NULL,
   `adding_time` DATETIME NULL,

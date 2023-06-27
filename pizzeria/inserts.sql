@@ -1,4 +1,4 @@
-INSERT INTO clients (name, surname, address, zip_code, city, district, phone)
+INSERT INTO `clients` (`name`, `surname`, `address`, `zip_code`, `city`, `district`, `phone`)
 VALUES
     ('Emma', 'Anderson', '456 Maple Avenue', '54321', 'Oakville', 'Willowbrook', '555-123-4567'),
     ('Oliver', 'Wilson', '789 Oak Street', '98765', 'Springfield', 'Maplewood', '555-234-5678'),
@@ -21,7 +21,7 @@ VALUES
     ('Amelia', 'Walker', '753 Pinecrest Road', '92653', 'Sunnyville', 'Woodside', '555-901-2345'),
     ('Mason', 'Phillips', '963 Maplewood Lane', '13579', 'Meadows', 'Brookside', '555-012-3456');
     
- INSERT INTO restaurants (address, city, district, zip_code)
+ INSERT INTO `restaurants` (`address`, `city`, `district`, `zip_code`)
 VALUES
     ('123 Main Street', 'New York', 'Manhattan', '10001'),
     ('456 Oak Avenue', 'Los Angeles', 'Hollywood', '90001'),
@@ -34,7 +34,7 @@ VALUES
     ('369 Pinecrest Road', 'Denver', 'Downtown', '80201'),
     ('963 Oakwood Lane', 'Nashville', 'Music Row', '37201');  
     
-    INSERT INTO workers (name, surname, position, nif, phone, restaurant_id)
+    INSERT INTO `workers` (`name`, `surname`, `position`, `nif`, `phone`, `restaurant_id`)
 VALUES
     ('John', 'Smith', 'cook', '12345678A', '555-111-1111', 1),
     ('Emma', 'Johnson', 'caterer', '98765432B', '555-222-2222', 1),
@@ -63,7 +63,7 @@ VALUES
     ('Ethan', 'Garcia', NULL, '98765421Y', '555-171-7171', 5),
     ('Emily', 'Davis', 'caterer', '12345789Z', '555-181-8181', 8);
     
-    INSERT INTO products (name, price, product_type)
+    INSERT INTO `products` (`name`, `price`, `product_type`)
 VALUES
     ('Pepperoni Pizza', 12.99, 'pizza'),
     ('Cheese Pizza', 11.99, 'pizza'),
@@ -81,17 +81,17 @@ VALUES
     ('Fanta', 1.99, 'drink'),
     ('Dr. Pepper', 1.99, 'drink');
     
-INSERT INTO categories (category_id, category_name)
+INSERT INTO `categories` (`category_id`, `category_name`)
 VALUES (1, 'vegan'), (2, 'meet'), (3, 'vegetarian');
 
-INSERT INTO pizza_category (category_id, product_id)
+INSERT INTO `pizza_category` (`category_id`, `product_id`)
 VALUES (1,1),
 		(1,2),
         (3,3),
         (2,4),
         (1,5);
         
-INSERT INTO orders (client_id, date_time, total_price, delivery_time, pick_up_time, caterer, restaurant_id)
+INSERT INTO `orders` (`client_id, date_time`, `total_price`, `delivery_time`, `pick_up_time`, `caterer`, `restaurant_id`)
 VALUES
     (7, '2023-06-15 12:30:00', 68.25, '2023-06-15 13:30:00', null, 2,1),
     (14, '2023-06-16 13:45:00', 92.47, '2023-06-16 14:45:00', null, 6,2),
@@ -121,7 +121,7 @@ VALUES
     (17, '2023-03-03 14:30:00', 75.50, null, '2023-03-03 16:30:00', 8,6),
     (16, '2023-04-04 22:30:00', 62.80, null, '2023-04-05 00:30:00', 6,7);
 
-INSERT INTO order_positions (order_id, product_id, quantity)
+INSERT INTO `order_positions` (`order_id`, `product_id`, `quantity`)
 VALUES
     (1, 5, 2),
     (1, 8, 3),

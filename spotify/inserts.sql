@@ -85,7 +85,7 @@ VALUES
     ('12354', '2023-06-24', 8.99, 10);
 
 
-INSERT INTO `Spotify`.`playlists` (`title`, `creation_date`, `songs_number`, `owner_id`, `elimination_date`, `playlist_status`) 
+INSERT INTO `spotify`.`playlists` (`title`, `creation_date`, `songs_number`, `owner_id`, `elimination_date`, `playlist_status`) 
     VALUES
     ('My Playlist 1', '2023-06-01', 10, 1, NULL, 'active'),
     ('My Playlist 2', '2023-06-02', 5, 2, '2023-06-10', 'inactive'),
@@ -98,13 +98,13 @@ INSERT INTO `Spotify`.`playlists` (`title`, `creation_date`, `songs_number`, `ow
     ('My Playlist 9', '2023-06-09', 7, 9, '2023-06-25', 'inactive'),
     ('My Playlist 10', '2023-06-10', 11, 10, NULL, 'active');
     
-    INSERT INTO `Spotify`.`artist` (`artist_id`, `name`, `surname`)
+    INSERT INTO `spotify`.`artist` (`artist_id`, `name`, `surname`)
 VALUES
     (1, 'Taylor', 'Swift'),
     (2, 'Ed', 'Sheeran'),
     (3, 'Adele', null);
     
-    INSERT INTO `Spotify`.`albums` (`album_id`, `title`, `release_year`, `artist_id`, `genre`)
+    INSERT INTO `spotify`.`albums` (`album_id`, `title`, `release_year`, `artist_id`, `genre`)
 VALUES
     (1, 'Album 1', 2022, 1, 'Pop'),
     (2, 'Album 2', 2020, 2, 'Rock'),
@@ -113,7 +113,7 @@ VALUES
     
     
     
-    INSERT INTO `Spotify`.`songs` (`title`, `duration_seconds`, `plays_number`, `album_id`)
+    INSERT INTO `spotify`.`songs` (`title`, `duration_seconds`, `plays_number`, `album_id`)
 VALUES
   ( 'Song 1', 240, 100, 1),
   ('Song 2', 180, 50, 1),
@@ -131,7 +131,7 @@ VALUES
   ('Song 14', 310, 55,4),
   ('Song 15', 290, 115, 4);
     
-INSERT INTO `Spotify`.`playlist_items` (`added_by`, `adding_time`, `song_id`, `playlist_id`)
+INSERT INTO `spotify`.`playlist_items` (`added_by`, `adding_time`, `song_id`, `playlist_id`)
 VALUES
   (1, '2023-06-15 10:30:00', 1, 1),
   (1, '2023-07-20 11:45:00', 3, 1),
@@ -166,7 +166,7 @@ VALUES
 
 
   
-    INSERT INTO `Spotify`.`artist_and_albums_followers` (`follower_id`, `artist_id`, `album_id`)
+    INSERT INTO `spotify`.`artist_and_albums_followers` (`follower_id`, `artist_id`, `album_id`)
 VALUES
     (1, 1, null),
     (2, 1, null),
@@ -199,7 +199,7 @@ VALUES
     (15, null, 4);
     
     
-    INSERT INTO `Spotify`.`album_and_songs_likes` (`liked_by`, `album_id`, `song_id`)
+    INSERT INTO `spotify`.`album_and_songs_likes` (`liked_by`, `album_id`, `song_id`)
 VALUES
     (1, 1, null),
     (2, 1, null),
