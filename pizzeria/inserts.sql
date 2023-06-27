@@ -91,7 +91,7 @@ VALUES (1,1),
         (2,4),
         (1,5);
         
-INSERT INTO `orders` (`client_id, date_time`, `total_price`, `delivery_time`, `pick_up_time`, `caterer`, `restaurant_id`)
+INSERT INTO `orders` (`client_id`, `date_time`, `total_price`, `delivery_time`, `pick_up_time`, `caterer`, `restaurant_id`)
 VALUES
     (7, '2023-06-15 12:30:00', 68.25, '2023-06-15 13:30:00', null, 2,1),
     (14, '2023-06-16 13:45:00', 92.47, '2023-06-16 14:45:00', null, 6,2),

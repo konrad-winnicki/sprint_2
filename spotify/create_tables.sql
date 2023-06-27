@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `spotify`.`subscriptions` (
   INDEX `subscribing_user_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `subscribing_user`
     FOREIGN KEY (`user_id`)
-    REFERENCES `Spotify`.`users` (`user_id`)
+    REFERENCES `spotify`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `spotify`.`credit_cards` (
   INDEX `cubscriber_card_idx` (`subscription_id` ASC) VISIBLE,
   CONSTRAINT `cubscriber_card`
     FOREIGN KEY (`subscription_id`)
-    REFERENCES `Spotify`.`subscriptions` (`subscription_id`)
+    REFERENCES `spotify`.`subscriptions` (`subscription_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `spotify`.`transactions` (
   PRIMARY KEY (`order_number`),
   CONSTRAINT `subscriber_transactions`
     FOREIGN KEY (`subscriber_id`)
-    REFERENCES `Spotify`.`subscriptions` (`subscription_id`)
+    REFERENCES `spotify`.`subscriptions` (`subscription_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `spotify`.`paypal` (
   INDEX `subscriber_paypal_idx` (`subscription_id` ASC) VISIBLE,
   CONSTRAINT `subscriber_paypal`
     FOREIGN KEY (`subscription_id`)
-    REFERENCES `Spotify`.`subscriptions` (`subscription_id`)
+    REFERENCES `spotify`.`subscriptions` (`subscription_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `spotify`.`albums` (
   INDEX `belong_to_artist_idx` (`artist_id` ASC) VISIBLE,
   CONSTRAINT `belong_to_artist`
     FOREIGN KEY (`artist_id`)
-    REFERENCES `Spotify`.`artist` (`artist_id`)
+    REFERENCES `spotify`.`artist` (`artist_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `spotify`.`songs` (
   INDEX `album_dependancy_idx` (`album_id` ASC) VISIBLE,
   CONSTRAINT `album_dependancy`
     FOREIGN KEY (`album_id`)
-    REFERENCES `Spotify`.`albums` (`album_id`)
+    REFERENCES `spotify`.`albums` (`album_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -119,12 +119,12 @@ CREATE TABLE IF NOT EXISTS `spotify`.`artist_and_albums_followers` (
   UNIQUE KEY `song_id_UNIQUE` (`follower_id`, `artist_id`),
   CONSTRAINT `artist_ref`
     FOREIGN KEY (`artist_id`)
-    REFERENCES `Spotify`.`artist` (`artist_id`)
+    REFERENCES `spotify`.`artist` (`artist_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `follower_res`
     FOREIGN KEY (`follower_id`)
-    REFERENCES `Spotify`.`users` (`user_id`)
+    REFERENCES `spotify`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -142,17 +142,17 @@ CREATE TABLE IF NOT EXISTS `spotify`.`album_and_songs_likes` (
   UNIQUE KEY `song_id_UNIQUE` (`liked_by`, `song_id`),
   CONSTRAINT `user_ref`
     FOREIGN KEY (`liked_by`)
-    REFERENCES `Spotify`.`users` (`user_id`)
+    REFERENCES `spotify`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `song_ref1`
     FOREIGN KEY (`song_id`)
-    REFERENCES `Spotify`.`songs` (`song_id`)
+    REFERENCES `spotify`.`songs` (`song_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `album_ref`
     FOREIGN KEY (`album_id`)
-    REFERENCES `Spotify`.`albums` (`album_id`)
+    REFERENCES `spotify`.`albums` (`album_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `spotify`.`playlists` (
   INDEX `playlist_owner_idx` (`owner_id` ASC) VISIBLE,
   CONSTRAINT `playlist_owner`
     FOREIGN KEY (`owner_id`)
-    REFERENCES `Spotify`.`users` (`user_id`)
+    REFERENCES `spotify`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -187,17 +187,17 @@ CREATE TABLE IF NOT EXISTS `spotify`.`playlist_items` (
   INDEX `album_item_ref_idx` (`song_id` ASC) VISIBLE,
   CONSTRAINT `playlist_ref`
     FOREIGN KEY (`playlist_id`)
-    REFERENCES `Spotify`.`playlists` (`playlist_id`)
+    REFERENCES `spotify`.`playlists` (`playlist_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `item_added_by`
     FOREIGN KEY (`added_by`)
-    REFERENCES `Spotify`.`users` (`user_id`)
+    REFERENCES `spotify`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `song_ref`
     FOREIGN KEY (`song_id`)
-    REFERENCES `Spotify`.`songs` (`song_id`)
+    REFERENCES `spotify`.`songs` (`song_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
